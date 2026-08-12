@@ -1,0 +1,54 @@
+{
+  "name": "webpack-markup-starter",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Webpack starter for markup developers",
+  "author": "Levchuk Oleg",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "rimraf dist && webpack serve --env mode=development --progress --color",
+    "build": "rimraf dist && webpack --env mode=production --progress --color"
+  },
+  "browserslist": [
+    "> 0.5%",
+    "last 2 versions",
+    "not dead"
+  ],
+  "devDependencies": {
+    "@babel/core": "^7.29.0",
+    "@babel/preset-env": "^7.29.2",
+    "autoprefixer": "^10.4.27",
+    "babel-loader": "^10.1.1",
+    "copy-webpack-plugin": "^14.0.0",
+    "core-js": "^3.49.0",
+    "css-loader": "^7.1.4",
+    "cssnano": "^7.1.3",
+    "eslint": "^9.39.4",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-webpack-plugin": "^5.0.3",
+    "html-webpack-plugin": "^5.6.6",
+    "image-minimizer-webpack-plugin": "^5.0.0",
+    "mini-css-extract-plugin": "^2.10.1",
+    "postcss-loader": "^8.2.1",
+    "postcss-sort-media-queries": "^6.3.2",
+    "rimraf": "^6.1.3",
+    "sass": "^1.98.0",
+    "sass-loader": "^16.0.7",
+    "sharp": "^0.35.3",
+    "style-loader": "^4.0.0",
+    "terser-webpack-plugin": "^5.4.0",
+    "webpack": "^5.105.4",
+    "webpack-cli": "^7.0.2",
+    "webpack-dev-server": "^5.2.3"
+  },
+  "dependencies": {
+    "@splidejs/splide": "^4.1.4",
+    "aos": "^2.3.4",
+    "overlayscrollbars": "^2.16.0",
+    "photoswipe": "^5.4.4",
+    "three": "^0.185.1"
+  }
+}

@@ -1,0 +1,82 @@
+@use "abstracts/mixins" as mx;
+@use "abstracts/functions" as fn;
+@use "abstracts/helpers";
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  min-width: 360px;
+  font-family: var(--base-font-family);
+  font-size: var(--base-font-size);
+  line-height: var(--base-line-height);
+  font-weight: var(--base-font-weight);
+  color: var(--color-white);
+  background: var(--color-black);
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0 0 var(--base-margin-bottom);
+}
+
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+.subtitle {
+  display: block;
+  font-family: var(--heading-font-family);
+  line-height: var(--heading-line-height);
+  font-weight: var(--heading-font-weight);
+  text-transform: uppercase;
+}
+
+h1 {
+  font-size: var(--h1-font-size);
+}
+
+h2 {
+  font-size: var(--h2-font-size);
+}
+
+h3 {
+  font-size: var(--h3-font-size);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  @include mx.transition(color);
+  color: var(--link-color);
+  text-decoration: var(--link-text-decoration);
+
+  @include mx.hover {
+    color: var(--link-hover-color);
+  }
+}
+
+.wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.container {
+  max-width: var(--container-max-width);
+  padding: var(--container-padding);
+  margin: 0 auto;
+}

@@ -1,0 +1,73 @@
+@use "sass:map";
+@use "sass:string";
+@use "./variables" as v;
+
+// @use "abstracts/media" as mq;
+
+/// Get breakpoint value from breakpoints map
+@function get-breakpoint($value) {
+  @if map.has-key(v.$breakpoints, $value) {
+    @return map.get(v.$breakpoints, $value);
+  }
+
+  @return $value;
+}
+
+/// Parse media query condition
+@function parse-condition($condition) {
+  $operator: "";
+  $value: "";
+
+  @if string.index($condition, ">=") {
+    $operator: "min";
+    $value: string.slice($condition, 3);
+  } @else if string.index($condition, "<=") {
+    $operator: "max";
+    $value: string.slice($condition, 3);
+  } @else if string.index($condition, ">") {
+    $operator: "min";
+    $value: get-breakpoint(string.slice($condition, 2)) + 1px;
+
+    @return "(#{$operator}-width: #{$value})";
+  } @else if string.index($condition, "<") {
+    $operator: "max";
+    $value: get-breakpoint(string.slice($condition, 2)) - 1px;
+
+    @return "(#{$operator}-width: #{$value})";
+  }
+
+  $value: get-breakpoint($value);
+
+  @return "(#{$operator}-width: #{$value})";
+}
+
+/// Responsive media query mixin
+/// usage
+/// @include mq.media(">=tablet") {
+///   // styles
+/// }
+///
+/// @include mq.media("<desktop") {
+///   // styles
+/// }
+///
+/// @include mq.media(">=tablet", "<laptop") {
+///   // styles
+/// }
+@mixin media($conditions...) {
+  $query: "";
+
+  @each $condition in $conditions {
+    $expression: parse-condition($condition);
+
+    @if $query == "" {
+      $query: $expression;
+    } @else {
+      $query: "#{$query} and #{$expression}";
+    }
+  }
+
+  @media #{$query} {
+    @content;
+  }
+}

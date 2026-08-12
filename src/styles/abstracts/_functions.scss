@@ -1,0 +1,19 @@
+@use "sass:map";
+@use "sass:math";
+@use "./variables" as v;
+
+// @use "abstracts/functions" as fn;
+
+/// Creates responsive fluid values using clamp()
+///
+/// usage
+/// font-size: fn.fluid(16px, 32px);
+/// gap: fn.fluid(20px, 40px);
+
+$layout-width: map.get(v.$breakpoints, "widescreen");
+
+@function fluid($min-size, $max-size) {
+  $responsive: math.div($max-size, $layout-width) * 100vw;
+
+  @return clamp($min-size, $responsive, $max-size);
+}

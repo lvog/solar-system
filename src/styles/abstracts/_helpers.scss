@@ -1,0 +1,11 @@
+// @use "abstracts/helpers";
+
+/// Reset default list styles
+/// usage
+/// @extend %listreset;
+
+%listreset {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}

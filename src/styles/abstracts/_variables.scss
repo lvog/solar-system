@@ -1,0 +1,41 @@
+$breakpoints: (
+  "phone": 576px,
+  "tablet": 768px,
+  "desktop": 1024px,
+  "laptop": 1280px,
+  "widescreen": 1440px,
+);
+
+:root {
+  --color-black: #000;
+  --color-white: #fff;
+  --color-orange: #ff8904;
+  --color-dark-orange: #e05504;
+
+  --base-font-family: "Montserrat", sans-serif;
+  --second-font-family: "Audiowide", sans-serif;
+  --base-font-size: 14px;
+  --base-line-height: 1.5;
+  --base-font-weight: 400;
+  --base-margin-bottom: 15px;
+
+  --container-max-width: 1600px;
+  --container-padding: 0 15px;
+
+  --heading-font-family: var(--second-font-family);
+  --heading-line-height: 1.2;
+  --heading-font-weight: 400;
+  --h1-font-size: 32px;
+  --h2-font-size: 28px;
+  --h3-font-size: 20px;
+  --h4-font-size: 18px;
+  --h5-font-size: 16px;
+  --h6-font-size: 14px;
+
+  --link-color: var(--color-orange);
+  --link-hover-color: var(--color-dark-orange);
+  --link-text-decoration: none;
+
+  --base-transition-duration: 0.3s;
+  --base-transition-timing-function: ease-in-out;
+}
