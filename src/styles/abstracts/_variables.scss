@@ -25,8 +25,8 @@ $breakpoints: (
   --heading-font-family: var(--second-font-family);
   --heading-line-height: 1.2;
   --heading-font-weight: 400;
-  --h1-font-size: 32px;
-  --h2-font-size: 24px;
+  --h1-font-size: 40px;
+  --h2-font-size: 32px;
   --h3-font-size: 20px;
   --h4-font-size: 18px;
   --h5-font-size: 16px;
@@ -35,6 +35,20 @@ $breakpoints: (
   --link-color: var(--color-orange);
   --link-hover-color: var(--color-dark-orange);
   --link-text-decoration: none;
+
+  --btn-font-family: var(--second-font-family);
+  --btn-font-size: 16px;
+  --btn-line-height: var(--base-line-height);
+  --btn-padding: 10px 25px;
+  --btn-color: var(--color-white);
+  --btn-background: linear-gradient(
+    to right,
+    rgba(225, 225, 225, 0) 0%,
+    rgba(225, 225, 225, 0.2) 50%,
+    rgba(225, 225, 225, 0) 100%
+  );
+  --btn-border: 1px solid rgba(255, 255, 255, 0.2);
+  --btn-border-radius: 25px;
 
   --base-transition-duration: 0.3s;
   --base-transition-timing-function: ease-in-out;

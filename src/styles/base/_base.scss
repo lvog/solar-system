@@ -1,5 +1,5 @@
 @use "abstracts/mixins" as mx;
-@use "abstracts/functions" as fn;
+@use "abstracts/media" as mq;
 @use "abstracts/helpers";
 
 html {
@@ -45,10 +45,18 @@ h3,
 
 h1 {
   font-size: var(--h1-font-size);
+
+  @include mq.media(">=desktop") {
+    font-size: 50px;
+  }
 }
 
 h2 {
   font-size: var(--h2-font-size);
+
+  @include mq.media(">=desktop") {
+    font-size: 46px;
+  }
 }
 
 h3 {
@@ -67,6 +75,29 @@ a {
 
   @include mx.hover {
     color: var(--link-hover-color);
+  }
+}
+
+.btn {
+  @include mx.transition(background-position);
+  min-width: 200px;
+  display: inline-block;
+  vertical-align: middle;
+  font-family: var(--btn-font-family);
+  font-size: var(--btn-font-size);
+  text-transform: uppercase;
+  color: var(--btn-color);
+  padding: var(--btn-padding);
+  background-image: var(--btn-background);
+  background-size: 200% 100%;
+  background-position: 0% 0%;
+  border: var(--btn-border);
+  border-radius: var(--btn-border-radius);
+  overflow: hidden;
+
+  @include mx.hover {
+    color: var(--btn-color);
+    background-position: 100% 0%;
   }
 }
 

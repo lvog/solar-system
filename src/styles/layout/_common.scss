@@ -2,10 +2,33 @@
 @use "abstracts/media" as mq;
 @use "abstracts/helpers";
 
+.heading-decor {
+  &:before,
+  &:after {
+    padding: 0 20px;
+  }
+
+  &:before {
+    content: "[";
+  }
+
+  &:after {
+    content: "]";
+  }
+}
+
 .full-screen-section {
   min-height: 100vh;
   min-height: 100dvh;
   width: 100%;
+}
+
+.intro-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 30px 0;
 }
 
 .sun-section {
@@ -50,30 +73,15 @@
     transition-duration: 1s;
   }
 
-  h1 {
-    font-size: 40px;
+  h2 {
     justify-self: center;
     align-self: end;
-    margin-bottom: 35%;
+    margin-bottom: 60%;
     position: relative;
     z-index: 2;
 
     @include mq.media(">=desktop") {
-      font-size: 50px;
       margin-bottom: 10%;
-    }
-
-    &:before,
-    &:after {
-      padding: 0 20px;
-    }
-
-    &:before {
-      content: "[";
-    }
-
-    &:after {
-      content: "]";
     }
   }
 
@@ -337,6 +345,206 @@
   transform-origin: left;
 }
 
+.planets-section {
+  padding: 30px 0;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .heading-decor {
+    text-align: center;
+    position: relative;
+    z-index: 2;
+  }
+}
+
+.planets-splide {
+  display: flex;
+  flex: 1 0 auto;
+
+  .splide__track {
+    width: 100%;
+    overflow: visible;
+  }
+
+  .splide__slide {
+    display: flex;
+  }
+}
+
+.planet {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+
+  @include mq.media(">=tablet") {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .bg-img {
+    @include mx.transition(rotate scale filter opacity, 2s);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 800px;
+    height: 800px;
+    opacity: 0;
+    translate: -50% -50%;
+    rotate: -160deg;
+    scale: 1.2;
+    filter: blur(18px);
+
+    .in-viewport & {
+      rotate: 0deg;
+      scale: 1;
+      filter: blur(1px);
+      opacity: 0.5;
+      animation: slowRotate 240s linear infinite;
+      animation-delay: 3s;
+    }
+
+    @include mq.media(">=tablet") {
+      width: 1200px;
+      height: 1200px;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .info-block,
+  .text-block,
+  .btn-holder {
+    position: relative;
+    z-index: 2;
+  }
+
+  .info-block,
+  .text-block,
+  .main-block {
+    margin-bottom: 15px;
+
+    @include mq.media(">=tablet") {
+      margin: 0;
+    }
+  }
+
+  .info-block,
+  .text-block {
+    @include mq.media(">=tablet") {
+      width: 30%;
+      padding: 0 15px;
+    }
+
+    @include mq.media(">=laptop") {
+      width: 25%;
+    }
+  }
+
+  .text-block {
+    transition-delay: 1s;
+
+    @include mq.media(">=tablet") {
+      order: -1;
+    }
+  }
+
+  .info-list {
+    @extend %listreset;
+
+    li {
+      margin-bottom: 15px;
+
+      &:first-child {
+        transition-delay: 1s;
+      }
+
+      &:nth-child(2) {
+        transition-delay: 1.3s;
+      }
+
+      &:nth-child(3) {
+        transition-delay: 1.6s;
+      }
+
+      &:last-child {
+        transition-delay: 1.9s;
+      }
+    }
+  }
+
+  .main-block {
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    @include mq.media(">=tablet") {
+      width: 40%;
+      height: auto;
+      padding: 100px 15px;
+    }
+
+    @include mq.media(">=laptop") {
+      width: 50%;
+    }
+
+    h3 {
+      color: var(--color-white);
+      text-shadow: 0 0 6px rgba(0, 0, 0, 0.8);
+      margin: 0;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+      transition-delay: 0.8s;
+    }
+  }
+
+  .main-img {
+    @include mx.transition(opacity filter transform, 1s);
+    width: auto;
+    max-height: 100%;
+    opacity: 0;
+    filter: blur(18px);
+    position: relative;
+    z-index: 1;
+
+    .in-viewport & {
+      opacity: 1;
+      transform: scale(1) rotate(0deg);
+      filter: blur(0);
+    }
+  }
+
+  .btn-holder {
+    text-align: center;
+    transition-delay: 2.2s;
+
+    @include mq.media(">=tablet") {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 30px;
+    }
+  }
+}
+
 .move-in {
   @include mx.transition(opacity visibility transform, 0.5s);
   opacity: 0;
@@ -375,5 +583,14 @@
   100% {
     filter: drop-shadow(0 0 12px rgba(255, 137, 4, 0.4))
       drop-shadow(0 0 25px rgba(255, 137, 4, 0.25));
+  }
+}
+
+@keyframes slowRotate {
+  from {
+    rotate: 0deg;
+  }
+  to {
+    rotate: 360deg;
   }
 }

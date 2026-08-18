@@ -41,5 +41,62 @@ export function initSplideCarousel() {
     });
   };
 
+  const planetsCarousel = () => {
+    const carousels = document.querySelectorAll(".planets-splide");
+
+    if (!carousels.length) return;
+
+    carousels.forEach((carousel) => {
+      const splide = new Splide(carousel, {
+        type: "fade",
+        perPage: 1,
+        arrows: false,
+        speed: 1000,
+        autoplay: false,
+        pagination: false,
+        easing: "ease-in-out",
+        rewind: true,
+      });
+
+      let isVisible = false;
+
+      const runOnce = (slide) => {
+        if (!isVisible) return;
+
+        const slideEl = slide.slide;
+
+        if (slideEl.classList.contains("in-viewport")) return;
+
+        slideEl.classList.add("in-viewport");
+      };
+
+      splide.on("active", (slide) => {
+        runOnce(slide);
+      });
+
+      splide.mount();
+
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          isVisible = entry.isIntersecting;
+
+          if (!isVisible) return;
+
+          const current = splide.Components.Slides.getAt(splide.index);
+
+          if (current) {
+            runOnce(current);
+          }
+        },
+        {
+          threshold: 0.15,
+        },
+      );
+
+      observer.observe(carousel);
+    });
+  };
+
   sunCarousel();
+  planetsCarousel();
 }
