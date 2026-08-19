@@ -55,6 +55,7 @@ export function initSplideCarousel() {
         autoplay: false,
         pagination: false,
         easing: "ease-in-out",
+        autoplay: true,
         rewind: true,
       });
 

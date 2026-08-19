@@ -5,6 +5,7 @@ import { sunScroll } from "@js/components/SunScrollAnimation";
 import { viewportObserver } from "@js/components/InViewportObserver";
 import { smoothScroll } from "@js/components/SmoothScroll";
 import { initSplideCarousel } from "@js/components/SplideCarousel";
+import { moonsScrollAnimation } from "@js/components/MoonsScrollAnimation";
 
 document.addEventListener("DOMContentLoaded", () => {
   smoothScroll.init();
@@ -12,4 +13,5 @@ document.addEventListener("DOMContentLoaded", () => {
   sunScroll.init();
   viewportObserver.init();
   initSplideCarousel();
+  moonsScrollAnimation.init();
 });
