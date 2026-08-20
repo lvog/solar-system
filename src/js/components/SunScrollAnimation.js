@@ -17,6 +17,10 @@ export class SunScrollAnimation {
     this._sunHeight = 0;
     this._startY = 0;
 
+    this._sunSection = null;
+    this._sectionTop = 0;
+    this._sectionBottom = 0;
+
     this._onScroll = this._onScroll.bind(this);
     this._onResize = this._onResize.bind(this);
 
@@ -25,6 +29,9 @@ export class SunScrollAnimation {
 
   init() {
     if (!this.sun || !this.blocks.length) return;
+
+    this._sunSection = this.sun.closest(".sun-section");
+    if (!this._sunSection) return;
 
     this._recalc();
 
@@ -42,6 +49,10 @@ export class SunScrollAnimation {
   _recalc() {
     this._sunHeight = this.sun.getBoundingClientRect().height || 0;
     this._startY = this.blocks[0].getBoundingClientRect().top + window.scrollY;
+
+    const rect = this._sunSection.getBoundingClientRect();
+    this._sectionTop = rect.top + window.scrollY;
+    this._sectionBottom = this._sectionTop + this._sunSection.offsetHeight;
   }
 
   _onScroll() {
@@ -54,20 +65,21 @@ export class SunScrollAnimation {
   }
 
   _update() {
-    const sunSection = this.sun.closest(".sun-section");
-    if (!sunSection) return;
+    if (!this._sunSection) return;
 
-    const rect = sunSection.getBoundingClientRect();
+    const scrollY = window.scrollY;
     const vh = window.innerHeight;
 
-    if (rect.bottom < 0 || rect.top > vh) return;
+    if (this._sectionBottom < scrollY || this._sectionTop > scrollY + vh) {
+      return;
+    }
 
     const n = Math.min(this.blocks.length, this.states.length);
     if (n === 0) return;
 
-    const vhPx = window.innerHeight || 1;
+    const vhPx = vh || 1;
 
-    const rawStage = (window.scrollY - this._startY) / vhPx;
+    const rawStage = (scrollY - this._startY) / vhPx;
     const stage = Math.max(0, Math.min(n - 1, rawStage));
 
     const index = Math.min(n - 1, Math.floor(stage));

@@ -14,6 +14,8 @@ class SunPlasmaScene {
 
     this.clock = new THREE.Clock();
     this._raf = 0;
+    this._isVisible = true;
+    this._visibilityObserver = null;
 
     this._onResize = this._onResize.bind(this);
     this._animate = this._animate.bind(this);
@@ -44,6 +46,18 @@ class SunPlasmaScene {
     this._fitCameraToSun();
 
     window.addEventListener("resize", this._onResize);
+    this._visibilityObserver = new IntersectionObserver(
+      ([entry]) => {
+        this._isVisible = entry.isIntersecting;
+        if (this._isVisible && !this._raf) {
+          this.clock.getDelta();
+          this._animate();
+        }
+      },
+      { rootMargin: "200px 0px" },
+    );
+    this._visibilityObserver.observe(this.container);
+
     this._animate();
 
     return this;
@@ -51,7 +65,10 @@ class SunPlasmaScene {
 
   destroy() {
     cancelAnimationFrame(this._raf);
+    this._raf = 0;
     window.removeEventListener("resize", this._onResize);
+    this._visibilityObserver?.disconnect();
+    this._visibilityObserver = null;
 
     if (this.sun) {
       this.sun.geometry.dispose();
@@ -211,7 +228,7 @@ class SunPlasmaScene {
 
     const r = this.radius * padding;
 
-    const vFov = THREE.MathUtils.degToRad(this.camera.fov); // vertical fov in radians
+    const vFov = THREE.MathUtils.degToRad(this.camera.fov);
     const hFov = 2 * Math.atan(Math.tan(vFov / 2) * aspect);
 
     const distV = r / Math.tan(vFov / 2);
@@ -222,6 +239,11 @@ class SunPlasmaScene {
   }
 
   _animate() {
+    if (!this._isVisible) {
+      this._raf = 0;
+      return;
+    }
+
     this._raf = requestAnimationFrame(this._animate);
 
     const dt = this.clock.getDelta();

@@ -3,6 +3,7 @@ class SmoothScroll {
     this.sectionSelector = sectionSelector;
 
     this.sections = [];
+    this.sectionBounds = [];
     this.isAnimating = false;
 
     this.duration = options.duration ?? 1200;
@@ -14,10 +15,12 @@ class SmoothScroll {
     this._wheelUnlockTimer = 0;
     this._animationFrame = 0;
     this._touchStart = null;
+    this._resizeTimer = 0;
 
     this._onWheel = this.onWheel.bind(this);
     this._onKeyDown = this.onKeyDown.bind(this);
     this._onResize = this.onResize.bind(this);
+    this._onLoad = this.onLoad.bind(this);
     this._onTouchStart = this.onTouchStart.bind(this);
     this._onTouchMove = this.onTouchMove.bind(this);
     this._onTouchEnd = this.onTouchEnd.bind(this);
@@ -28,9 +31,12 @@ class SmoothScroll {
     this.sections = [...document.querySelectorAll(this.sectionSelector)];
     if (!this.sections.length) return;
 
+    this.recalculateBounds();
+
     window.addEventListener("wheel", this._onWheel, { passive: false });
     window.addEventListener("keydown", this._onKeyDown);
     window.addEventListener("resize", this._onResize);
+    window.addEventListener("load", this._onLoad);
     window.addEventListener("touchstart", this._onTouchStart, {
       passive: true,
     });
@@ -45,16 +51,32 @@ class SmoothScroll {
     window.removeEventListener("wheel", this._onWheel);
     window.removeEventListener("keydown", this._onKeyDown);
     window.removeEventListener("resize", this._onResize);
+    window.removeEventListener("load", this._onLoad);
     window.removeEventListener("touchstart", this._onTouchStart);
     window.removeEventListener("touchmove", this._onTouchMove);
     window.removeEventListener("touchend", this._onTouchEnd);
     window.removeEventListener("touchcancel", this._onTouchCancel);
     clearTimeout(this._wheelUnlockTimer);
+    clearTimeout(this._resizeTimer);
     this.cancelAnimation();
+  }
+
+  onLoad() {
+    this.recalculateBounds();
   }
 
   onResize() {
     this.sections = [...document.querySelectorAll(this.sectionSelector)];
+
+    clearTimeout(this._resizeTimer);
+    this._resizeTimer = setTimeout(() => this.recalculateBounds(), 150);
+  }
+
+  recalculateBounds() {
+    this.sectionBounds = this.sections.map((el) => {
+      const top = el.getBoundingClientRect().top + window.scrollY;
+      return { top, bottom: top + el.offsetHeight };
+    });
   }
 
   onWheel(e) {
@@ -186,10 +208,7 @@ class SmoothScroll {
   }
 
   getSectionBounds(index) {
-    const el = this.sections[index];
-    const top = el.getBoundingClientRect().top + window.scrollY;
-    const bottom = top + el.offsetHeight;
-    return { top, bottom };
+    return this.sectionBounds[index];
   }
 
   getActiveIndex() {
