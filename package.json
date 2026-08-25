@@ -46,6 +46,7 @@
   },
   "dependencies": {
     "@splidejs/splide": "^4.1.4",
+    "overlayscrollbars": "^2.16.0",
     "particles.js": "^2.0.0",
     "three": "^0.185.1"
   }

@@ -7,8 +7,10 @@ import { smoothScroll } from "@js/components/SmoothScroll";
 import { initSplideCarousel } from "@js/components/SplideCarousel";
 import { moonsScrollAnimation } from "@js/components/MoonsScrollAnimation";
 import { particles } from "@js/components/Particles";
+import { customScroll } from "@js/components/CustomScroll";
 
 document.addEventListener("DOMContentLoaded", () => {
+  customScroll.init();
   smoothScroll.init();
   sunPlasmaScene.init();
   sunScroll.init();
