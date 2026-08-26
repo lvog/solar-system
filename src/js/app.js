@@ -1,5 +1,7 @@
 import "../styles/style.scss";
 
+import { resetScrollOnOrientation } from "@js/helpers/resetScrollOnOrientation";
+
 import { sunPlasmaScene } from "@js/components/SunPlasmaScene";
 import { sunScroll } from "@js/components/SunScrollAnimation";
 import { viewportObserver } from "@js/components/InViewportObserver";
@@ -11,6 +13,8 @@ import { customScroll } from "@js/components/CustomScroll";
 import { textAnimation } from "@js/components/TextAnimation";
 
 document.addEventListener("DOMContentLoaded", () => {
+  resetScrollOnOrientation();
+
   customScroll.init();
   smoothScroll.init();
   sunPlasmaScene.init();
