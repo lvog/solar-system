@@ -8,10 +8,13 @@
   <body data-overlayscrollbars-initialize>
     <div class="wrapper">
       <main>
-        <section class="intro-section full-screen-section viewport">
+        <section
+          class="intro-section full-screen-section viewport"
+          data-viewport-once
+        >
           <div id="particles-js"></div>
           <div class="container">
-            <h1>Solar system</h1>
+            <h1 class="move-in">Solar system</h1>
           </div>
         </section>
         <section
@@ -161,7 +164,9 @@
         </section>
         <section class="planets-section full-screen-section">
           <div class="container">
-            <h2 class="heading-decor">Planets</h2>
+            <h2 class="heading-decor viewport move-in" data-viewport-once>
+              Planets
+            </h2>
             <div class="splide planets-splide">
               <div class="splide__track">
                 <ul class="splide__list">
@@ -614,14 +619,19 @@
           </div>
         </section>
         <section class="moons-section">
-          <div class="full-screen-section main-block">
+          <div
+            class="full-screen-section main-block viewport"
+            data-viewport-once
+          >
             <div class="container">
-              <h2 class="heading-decor">Moons</h2>
-              <p>
-                Our solar system has more than 891 moons. Many moons orbit
-                planets, and even some asteroids have moons. Here are the most
-                famous of them.
-              </p>
+              <div class="main-info">
+                <h2 class="heading-decor move-in">Moons</h2>
+                <p class="split">
+                  Our solar system has more than 891 moons. Many moons orbit
+                  planets, and even some asteroids have moons. Here are the most
+                  famous of them.
+                </p>
+              </div>
             </div>
           </div>
           <div class="moons-holder">
@@ -818,19 +828,22 @@
             </div>
           </div>
         </section>
-        <section class="contacts-section full-screen-section">
+        <section
+          class="contacts-section full-screen-section viewport"
+          data-viewport-once
+        >
           <div class="container">
-            <h2 class="heading-decor">Contacts</h2>
-            <p>
-              Most of the information was taken from the official NASA website.
-              So, if you need more information, please visit
-              <a href="#">NASA’s official website</a>.
-            </p>
-            <p>
-              If you liked this website, feel free to check out some of my other
-              projects. For collaboration inquiries, please use the contact
-              details provided below.
-            </p>
+            <div class="main-info">
+              <h2 class="heading-decor move-in">Contacts</h2>
+              <p class="split">
+                Most of the information was taken from the official NASA
+                website. So, if you need more information, please visit
+                <a href="#">NASA’s official website</a>. If you liked this
+                website, feel free to check out some of my other projects. For
+                collaboration inquiries, please use the contact details provided
+                below.
+              </p>
+            </div>
           </div>
         </section>
       </main>

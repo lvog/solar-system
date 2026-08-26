@@ -8,6 +8,7 @@ import { initSplideCarousel } from "@js/components/SplideCarousel";
 import { moonsScrollAnimation } from "@js/components/MoonsScrollAnimation";
 import { particles } from "@js/components/Particles";
 import { customScroll } from "@js/components/CustomScroll";
+import { textAnimation } from "@js/components/TextAnimation";
 
 document.addEventListener("DOMContentLoaded", () => {
   customScroll.init();
@@ -18,4 +19,5 @@ document.addEventListener("DOMContentLoaded", () => {
   initSplideCarousel();
   moonsScrollAnimation.init();
   particles.init();
+  textAnimation.init();
 });

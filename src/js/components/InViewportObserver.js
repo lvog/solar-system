@@ -16,15 +16,26 @@ class InViewportObserver {
     if (!this.elements.length) return;
 
     this.observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        entry.target.classList.toggle(
-          "in-viewport",
-          entry.intersectionRatio >= this.options.threshold,
-        );
-      });
+      entries.forEach((entry) => this.handleEntry(entry));
     }, this.options);
 
     this.elements.forEach((el) => this.observer.observe(el));
+  }
+
+  handleEntry(entry) {
+    const el = entry.target;
+    const isVisible = entry.intersectionRatio >= this.options.threshold;
+    const isOnce = "viewportOnce" in el.dataset;
+
+    if (isOnce) {
+      if (isVisible) {
+        el.classList.add("in-viewport");
+        this.observer.unobserve(el);
+      }
+      return;
+    }
+
+    el.classList.toggle("in-viewport", isVisible);
   }
 }
 
