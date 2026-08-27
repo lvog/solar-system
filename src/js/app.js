@@ -1,5 +1,7 @@
 import "../styles/style.scss";
 
+import { resetScrollOnOrientation } from "@js/helpers/resetScrollOnOrientation";
+
 import { sunPlasmaScene } from "@js/components/SunPlasmaScene";
 import { sunScroll } from "@js/components/SunScrollAnimation";
 import { viewportObserver } from "@js/components/InViewportObserver";
@@ -9,8 +11,11 @@ import { moonsScrollAnimation } from "@js/components/MoonsScrollAnimation";
 import { particles } from "@js/components/Particles";
 import { customScroll } from "@js/components/CustomScroll";
 import { textAnimation } from "@js/components/TextAnimation";
+import { scrollDistance } from "@js/components/ScrollDistance";
 
 document.addEventListener("DOMContentLoaded", () => {
+  resetScrollOnOrientation();
+
   customScroll.init();
   smoothScroll.init();
   sunPlasmaScene.init();
@@ -20,4 +25,5 @@ document.addEventListener("DOMContentLoaded", () => {
   moonsScrollAnimation.init();
   particles.init();
   textAnimation.init();
+  scrollDistance.init();
 });

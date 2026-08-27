@@ -2,6 +2,24 @@ import Splide from "@splidejs/splide";
 import "@splidejs/splide/css";
 
 export function initSplideCarousel() {
+  const playOnFirstViewport = (carousel, splide) => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+
+        splide.Components.Autoplay.play();
+
+        observer.unobserve(carousel);
+        observer.disconnect();
+      },
+      {
+        threshold: 0.15,
+      },
+    );
+
+    observer.observe(carousel);
+  };
+
   const sunCarousel = () => {
     const carousels = document.querySelectorAll(".sun-splide");
 
@@ -20,13 +38,15 @@ export function initSplideCarousel() {
         arrows: false,
         pagination: false,
         speed: 2000,
-        autoplay: true,
-        interval: 7000,
+        autoplay: false,
+        interval: 8000,
       });
 
       splide.on("mounted", () => {
         current.textContent = String(splide.index + 1).padStart(2, "0");
         total.textContent = String(splide.length).padStart(2, "0");
+
+        playOnFirstViewport(carousel, splide);
       });
 
       splide.on("moved", (newIndex) => {
@@ -51,11 +71,11 @@ export function initSplideCarousel() {
         type: "fade",
         perPage: 1,
         arrows: false,
-        speed: 1000,
-        autoplay: false,
         pagination: false,
+        speed: 2000,
+        interval: 9000,
         easing: "ease-in-out",
-        autoplay: true,
+        autoplay: false,
         rewind: true,
       });
 
@@ -83,11 +103,16 @@ export function initSplideCarousel() {
 
           if (!isVisible) return;
 
+          splide.Components.Autoplay.play();
+
           const current = splide.Components.Slides.getAt(splide.index);
 
           if (current) {
             runOnce(current);
           }
+
+          observer.unobserve(carousel);
+          observer.disconnect();
         },
         {
           threshold: 0.15,
