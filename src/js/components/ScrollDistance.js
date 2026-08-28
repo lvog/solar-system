@@ -37,16 +37,12 @@ class ScrollDistance {
     window.addEventListener("scroll", this._onScroll, { passive: true });
     window.addEventListener("resize", this._onResize);
 
-    // Ловимо стан "після повного довантаження" — картинки з loading="lazy"
-    // та фонові зображення можуть змінити scrollHeight вже після DOMContentLoaded.
     if (document.readyState === "complete") {
       this.recalculate();
     } else {
       window.addEventListener("load", this._onLoad, { once: true });
     }
 
-    // Ловимо будь-яку зміну висоти контенту (розкриття planet-card,
-    // довантаження шрифтів, зміну макету) — не тільки resize вікна.
     if (typeof ResizeObserver !== "undefined") {
       this._resizeObserver = new ResizeObserver(this._onResize);
       this._resizeObserver.observe(document.body);

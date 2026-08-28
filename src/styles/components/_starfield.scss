@@ -1,0 +1,68 @@
+@use "sass:math";
+@use "sass:list";
+@use "sass:string";
+
+@function star-shadows($count, $spread-y: 100vh) {
+  $shadows: ();
+
+  @for $i from 1 through $count {
+    $x: math.div(math.random(1000), 10) * 1vw;
+    $y: math.div(math.random(1000), 10) * math.div($spread-y, 100vh) * 1vh;
+    $o: math.div(math.random(60) + 30, 100);
+
+    $shadow: "#{$x} #{$y} 0 rgba(255, 255, 255, #{$o})";
+
+    $shadows: list.append($shadows, string.unquote($shadow), comma);
+  }
+
+  @return $shadows;
+}
+
+.starfield {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  background: var(--color-black, #050506);
+
+  .layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1px;
+    height: 1px;
+    border-radius: 50%;
+
+    &.small {
+      box-shadow: star-shadows(140);
+      animation: floating 24s ease-in-out infinite;
+    }
+
+    &.large {
+      width: 2px;
+      height: 2px;
+      box-shadow: star-shadows(45);
+      opacity: 0.9;
+      animation: floating 14s ease-in-out infinite reverse;
+    }
+  }
+}
+
+@keyframes floating {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-50px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .starfield__layer {
+    animation: none;
+  }
+}
