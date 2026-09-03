@@ -8,7 +8,7 @@ export class SunScrollAnimation {
 
     this.states = [
       { x: -50, s: 1.15 },
-      { x: -70, s: 1 },
+      { x: -75, s: 1 },
       { x: -115, s: 1.3 },
       { x: -50, s: 1.5 },
     ];

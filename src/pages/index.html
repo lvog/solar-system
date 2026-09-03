@@ -23,8 +23,20 @@
       <div class="layer large"></div>
     </div>
     <div class="wrapper">
+      <!-- <header class="header">
+        <nav class="nav">
+          <ul class="menu">
+            <li><a href="#intro">Intro</a></li>
+            <li><a href="#sun">Sun</a></li>
+            <li><a href="#planets">Planets</a></li>
+            <li><a href="#moons">Moons</a></li>
+            <li><a href="#contacts">Contacts</a></li>
+          </ul>
+        </nav>
+      </header> -->
       <main>
         <section
+          id="intro"
           class="intro-section full-screen-section center viewport"
           data-viewport-once
         >
@@ -36,14 +48,16 @@
           </div>
           <span class="scroll">scroll <span class="track"></span></span>
         </section>
-        <section class="sun-section">
-          <div class="container">
-            <span class="sun"><span class="glow"></span></span>
-            <div class="sun-info-holder">
-              <div class="sun-info-block viewport full-screen-section">
+        <section id="sun" class="sun-section">
+          <span class="sun"><span class="glow"></span></span>
+          <div class="sun-info-holder">
+            <div class="sun-info-block viewport full-screen-section">
+              <div class="container">
                 <h2 class="heading-decor move-in">The Sun</h2>
               </div>
-              <div class="sun-info-block viewport full-screen-section">
+            </div>
+            <div class="sun-info-block viewport full-screen-section">
+              <div class="container">
                 <div class="info-block center-left move-in">
                   <span class="icon"></span>
                   <ul class="info-list">
@@ -84,10 +98,12 @@
                   </ul>
                 </div>
               </div>
-              <div
-                class="sun-info-block viewport bg-holder full-screen-section"
-                style="background-image: url(images/milky-way-img.jpg)"
-              >
+            </div>
+            <div
+              class="sun-info-block viewport bg-holder full-screen-section"
+              style="background-image: url(images/milky-way-img.jpg)"
+            >
+              <div class="container">
                 <img
                   class="decor fade-in"
                   src="images/decor-lines.png"
@@ -108,10 +124,12 @@
                   </p>
                 </div>
               </div>
-              <div
-                class="sun-info-block viewport bg-holder full-screen-section"
-                style="background-image: url(images/milky-way-img.jpg)"
-              >
+            </div>
+            <div
+              class="sun-info-block viewport bg-holder full-screen-section"
+              style="background-image: url(images/milky-way-img.jpg)"
+            >
+              <div class="container">
                 <div class="splide-holder move-in">
                   <h3>Interesting facts about the Sun</h3>
                   <div class="splide sun-splide">
@@ -184,12 +202,14 @@
             </div>
           </div>
         </section>
-        <section class="planets-section full-screen-section">
+        <section
+          id="planets"
+          class="planets-section viewport full-screen-section"
+          data-viewport-once
+        >
           <div class="container">
-            <h2 class="heading-decor viewport move-in" data-viewport-once>
-              Planets
-            </h2>
-            <div class="splide planets-splide">
+            <h2 class="heading-decor move-in">Planets</h2>
+            <div class="splide planets-splide fade-in">
               <div class="splide__track">
                 <ul class="splide__list">
                   <li class="splide__slide">
@@ -204,7 +224,7 @@
                             alt="image description"
                           />
                         </div>
-                        <h3 class="fade-in">Mercury</h3>
+                        <h3>Mercury</h3>
                         <img
                           class="main-img"
                           width="300"
@@ -214,7 +234,7 @@
                           alt="Mercury"
                         />
                       </div>
-                      <div class="text-block move-in">
+                      <div class="text-block">
                         <p>
                           Mercury is the smallest planet and the closest to the
                           Sun. From its surface, the Sun appears more than three
@@ -223,27 +243,27 @@
                       </div>
                       <div class="info-block">
                         <ul class="info-list">
-                          <li class="move-in">
+                          <li>
                             <strong class="subtitle"
                               >Average distance to the Sun</strong
                             >
                             <span>58 million kilometers</span>
                           </li>
-                          <li class="move-in">
+                          <li>
                             <strong class="subtitle">Radius</strong>
                             <span>2440 kilometers</span>
                           </li>
-                          <li class="move-in">
+                          <li>
                             <strong class="subtitle">Year</strong>
                             <span>88 Earth days</span>
                           </li>
-                          <li class="move-in">
+                          <li>
                             <strong class="subtitle">Temperature</strong>
                             <span>from −180 °C to 430 °C</span>
                           </li>
                         </ul>
                       </div>
-                      <div class="btn-holder fade-in">
+                      <div class="btn-holder">
                         <a href="#" class="btn">Find more</a>
                       </div>
                     </article>
@@ -260,7 +280,7 @@
                             alt="image description"
                           />
                         </div>
-                        <h3 class="fade-in">Venus</h3>
+                        <h3>Venus</h3>
                         <img
                           class="main-img"
                           width="300"
@@ -270,7 +290,7 @@
                           alt="Venus"
                         />
                       </div>
-                      <div class="text-block move-in">
+                      <div class="text-block">
                         <p>
                           Venus is the second planet from the Sun and the
                           hottest planet in our solar system. It is sometimes
@@ -279,27 +299,27 @@
                       </div>
                       <div class="info-block">
                         <ul class="info-list">
-                          <li class="move-in">
+                          <li>
                             <strong class="subtitle"
                               >Average distance to the Sun</strong
                             >
                             <span>108 million kilometers</span>
                           </li>
-                          <li class="move-in">
+                          <li>
                             <strong class="subtitle">Radius</strong>
                             <span>6052 kilometers</span>
                           </li>
-                          <li class="move-in">
+                          <li>
                             <strong class="subtitle">Year</strong>
                             <span>224.7 days</span>
                           </li>
-                          <li class="move-in">
+                          <li>
                             <strong class="subtitle">Temperature</strong>
                             <span>464 °C</span>
                           </li>
                         </ul>
                       </div>
-                      <div class="btn-holder fade-in">
+                      <div class="btn-holder">
                         <a href="#" class="btn">Find more</a>
                       </div>
                     </article>
@@ -316,7 +336,7 @@
                             alt="image description"
                           />
                         </div>
-                        <h3 class="fade-in">Earth</h3>
+                        <h3>Earth</h3>
                         <img
                           class="main-img"
                           width="300"
@@ -326,7 +346,7 @@
                           alt="Earth"
                         />
                       </div>
-                      <div class="text-block move-in">
+                      <div class="text-block">
                         <p>
                           Earth is the third planet from the Sun and the fifth
                           largest planet in our solar system.
@@ -334,27 +354,27 @@
                       </div>
                       <div class="info-block">
                         <ul class="info-list">
-                          <li class="move-in">
+                          <li>
                             <strong class="subtitle"
                               >Average distance to the Sun</strong
                             >
                             <span>150 million kilometers</span>
                           </li>
-                          <li class="move-in">
+                          <li>
                             <strong class="subtitle">Radius</strong>
                             <span>6378 kilometers</span>
                           </li>
-                          <li class="move-in">
+                          <li>
                             <strong class="subtitle">Year</strong>
                             <span>365.25 Earth days</span>
                           </li>
-                          <li class="move-in">
+                          <li>
                             <strong class="subtitle">Temperature</strong>
                             <span>from −89 °C to 57 °C</span>
                           </li>
                         </ul>
                       </div>
-                      <div class="btn-holder fade-in">
+                      <div class="btn-holder">
                         <a href="#" class="btn">Find more</a>
                       </div>
                     </article>
@@ -371,7 +391,7 @@
                             alt="image description"
                           />
                         </div>
-                        <h3 class="fade-in">Mars</h3>
+                        <h3>Mars</h3>
                         <img
                           class="main-img"
                           width="300"
@@ -381,7 +401,7 @@
                           alt="Mars"
                         />
                       </div>
-                      <div class="text-block move-in">
+                      <div class="text-block">
                         <p>
                           Mars is a cold, dusty desert world with a thin
                           atmosphere, seasons, polar ice caps, volcanoes, and
@@ -390,27 +410,27 @@
                       </div>
                       <div class="info-block">
                         <ul class="info-list">
-                          <li class="move-in">
+                          <li>
                             <strong class="subtitle"
                               >Average distance to the Sun</strong
                             >
                             <span>228 million kilometers</span>
                           </li>
-                          <li class="move-in">
+                          <li>
                             <strong class="subtitle">Radius</strong>
                             <span>3390 kilometers</span>
                           </li>
-                          <li class="move-in">
+                          <li>
                             <strong class="subtitle">Year</strong>
                             <span>686.98 Earth days</span>
                           </li>
-                          <li class="move-in">
+                          <li>
                             <strong class="subtitle">Temperature</strong>
                             <span>from −125 °C to 20 °C</span>
                           </li>
                         </ul>
                       </div>
-                      <div class="btn-holder fade-in">
+                      <div class="btn-holder">
                         <a href="#" class="btn">Find more</a>
                       </div>
                     </article>
@@ -427,7 +447,7 @@
                             alt="image description"
                           />
                         </div>
-                        <h3 class="fade-in">Jupiter</h3>
+                        <h3>Jupiter</h3>
                         <img
                           class="main-img"
                           width="300"
@@ -437,7 +457,7 @@
                           alt="Jupiter"
                         />
                       </div>
-                      <div class="text-block move-in">
+                      <div class="text-block">
                         <p>
                           Jupiter is the fifth planet from the Sun and the
                           largest planet in our solar system.
@@ -445,27 +465,27 @@
                       </div>
                       <div class="info-block">
                         <ul class="info-list">
-                          <li class="move-in">
+                          <li>
                             <strong class="subtitle"
                               >Average distance to the Sun</strong
                             >
                             <span>778 million kilometers</span>
                           </li>
-                          <li class="move-in">
+                          <li>
                             <strong class="subtitle">Radius</strong>
                             <span>69 911 kilometers</span>
                           </li>
-                          <li class="move-in">
+                          <li>
                             <strong class="subtitle">Year</strong>
                             <span>11.86 Earth years</span>
                           </li>
-                          <li class="move-in">
+                          <li>
                             <strong class="subtitle">Temperature</strong>
                             <span>-145 °C</span>
                           </li>
                         </ul>
                       </div>
-                      <div class="btn-holder fade-in">
+                      <div class="btn-holder">
                         <a href="#" class="btn">Find more</a>
                       </div>
                     </article>
@@ -482,7 +502,7 @@
                             alt="image description"
                           />
                         </div>
-                        <h3 class="fade-in">Saturn</h3>
+                        <h3>Saturn</h3>
                         <img
                           class="main-img"
                           width="580"
@@ -492,7 +512,7 @@
                           alt="Saturn"
                         />
                       </div>
-                      <div class="text-block move-in">
+                      <div class="text-block">
                         <p>
                           Saturn is the sixth planet from the Sun and the second
                           largest planet in our solar system.
@@ -500,27 +520,27 @@
                       </div>
                       <div class="info-block">
                         <ul class="info-list">
-                          <li class="move-in">
+                          <li>
                             <strong class="subtitle"
                               >Average distance to the Sun</strong
                             >
                             <span>1.43 billion kilometers</span>
                           </li>
-                          <li class="move-in">
+                          <li>
                             <strong class="subtitle">Radius</strong>
                             <span>58 232 kilometers</span>
                           </li>
-                          <li class="move-in">
+                          <li>
                             <strong class="subtitle">Year</strong>
                             <span>29.5 Earth years</span>
                           </li>
-                          <li class="move-in">
+                          <li>
                             <strong class="subtitle">Temperature</strong>
                             <span>-178 °C</span>
                           </li>
                         </ul>
                       </div>
-                      <div class="btn-holder fade-in">
+                      <div class="btn-holder">
                         <a href="#" class="btn">Find more</a>
                       </div>
                     </article>
@@ -537,7 +557,7 @@
                             alt="image description"
                           />
                         </div>
-                        <h3 class="fade-in">Uranus</h3>
+                        <h3>Uranus</h3>
                         <img
                           class="main-img"
                           width="300"
@@ -547,7 +567,7 @@
                           alt="Uranus"
                         />
                       </div>
-                      <div class="text-block move-in">
+                      <div class="text-block">
                         <p>
                           Uranus is the seventh planet from the Sun and the
                           third largest planet in our solar system.
@@ -555,27 +575,27 @@
                       </div>
                       <div class="info-block">
                         <ul class="info-list">
-                          <li class="move-in">
+                          <li>
                             <strong class="subtitle"
                               >Average distance to the Sun</strong
                             >
                             <span>2.87 billion kilometers</span>
                           </li>
-                          <li class="move-in">
+                          <li>
                             <strong class="subtitle">Radius</strong>
                             <span>25 362 kilometers</span>
                           </li>
-                          <li class="move-in">
+                          <li>
                             <strong class="subtitle">Year</strong>
                             <span>84 Earth years</span>
                           </li>
-                          <li class="move-in">
+                          <li>
                             <strong class="subtitle">Temperature</strong>
                             <span>-224 °C</span>
                           </li>
                         </ul>
                       </div>
-                      <div class="btn-holder fade-in">
+                      <div class="btn-holder">
                         <a href="#" class="btn">Find more</a>
                       </div>
                     </article>
@@ -592,7 +612,7 @@
                             alt="image description"
                           />
                         </div>
-                        <h3 class="fade-in">Neptune</h3>
+                        <h3>Neptune</h3>
                         <img
                           class="main-img"
                           width="300"
@@ -602,7 +622,7 @@
                           alt="Neptune"
                         />
                       </div>
-                      <div class="text-block move-in">
+                      <div class="text-block">
                         <p>
                           Neptune is the eighth and most distant planet in our
                           solar system. It's the fourth largest planet.
@@ -610,27 +630,27 @@
                       </div>
                       <div class="info-block">
                         <ul class="info-list">
-                          <li class="move-in">
+                          <li>
                             <strong class="subtitle"
                               >Average distance to the Sun</strong
                             >
                             <span>4.5 billion kilometers</span>
                           </li>
-                          <li class="move-in">
+                          <li>
                             <strong class="subtitle">Radius</strong>
                             <span>24 622 kilometers</span>
                           </li>
-                          <li class="move-in">
+                          <li>
                             <strong class="subtitle">Year</strong>
                             <span>164.8 Earth years</span>
                           </li>
-                          <li class="move-in">
+                          <li>
                             <strong class="subtitle">Temperature</strong>
                             <span>-214 °C</span>
                           </li>
                         </ul>
                       </div>
-                      <div class="btn-holder fade-in">
+                      <div class="btn-holder">
                         <a href="#" class="btn">Find more</a>
                       </div>
                     </article>
@@ -640,7 +660,7 @@
             </div>
           </div>
         </section>
-        <section class="moons-section">
+        <section id="moons" class="moons-section">
           <div
             class="full-screen-section bg-holder center viewport"
             style="background-image: url(images/milky-way-img.jpg)"
@@ -852,11 +872,11 @@
           </div>
         </section>
         <section
+          id="contacts"
           class="contacts-section center full-screen-section viewport"
-          data-viewport-once
         >
           <div class="container">
-            <div class="main-info">
+            <div class="main-info viewport" data-viewport-once>
               <h2 class="heading-decor move-in">Contacts</h2>
               <p class="split">
                 Most of the information was taken from the official
@@ -926,6 +946,13 @@
           </div>
         </section>
       </main>
+      <footer class="footer center">
+        <div class="container">
+          <span class="copyright">
+            &copy; 2026 <a href="#">Oleg Levchuk</a>. All rights reserved.
+          </span>
+        </div>
+      </footer>
     </div>
   </body>
 </html>

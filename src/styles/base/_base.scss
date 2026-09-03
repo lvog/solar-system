@@ -61,6 +61,7 @@ h2 {
 
 h3 {
   font-size: var(--h3-font-size);
+  color: var(--color-orange);
 
   @include mq.media(">=desktop") {
     font-size: 26px;

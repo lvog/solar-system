@@ -71,7 +71,7 @@ export function initSplideCarousel() {
         type: "fade",
         perPage: 1,
         arrows: false,
-        pagination: false,
+        pagination: true,
         speed: 2000,
         interval: 9000,
         easing: "ease-in-out",
@@ -79,47 +79,7 @@ export function initSplideCarousel() {
         rewind: true,
       });
 
-      let isVisible = false;
-
-      const runOnce = (slide) => {
-        if (!isVisible) return;
-
-        const slideEl = slide.slide;
-
-        if (slideEl.classList.contains("in-viewport")) return;
-
-        slideEl.classList.add("in-viewport");
-      };
-
-      splide.on("active", (slide) => {
-        runOnce(slide);
-      });
-
       splide.mount();
-
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          isVisible = entry.isIntersecting;
-
-          if (!isVisible) return;
-
-          splide.Components.Autoplay.play();
-
-          const current = splide.Components.Slides.getAt(splide.index);
-
-          if (current) {
-            runOnce(current);
-          }
-
-          observer.unobserve(carousel);
-          observer.disconnect();
-        },
-        {
-          threshold: 0.15,
-        },
-      );
-
-      observer.observe(carousel);
     });
   };
 
